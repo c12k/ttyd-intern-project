@@ -8,5 +8,4 @@ Key results:
 - Registration page for new users
 - Feedback mechanism
 - Web stats/logging and tracking dashboard for user visits
-- Presentation of what was achieved/completed and what was learnt
 - Github repo showing all code with regular commits and documentation
