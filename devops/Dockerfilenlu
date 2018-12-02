@@ -1,0 +1,9 @@
+FROM rasa/rasa_nlu:0.13.7-full
+RUN python -m spacy download en_core_web_md
+ADD models/nlu/ projects
+ADD data/training.json .
+ADD train_nlu_config.yml .
+ADD entry-nlu.sh .
+EXPOSE 5000
+ENTRYPOINT ["./entry-nlu.sh"]
+CMD ["start"]
