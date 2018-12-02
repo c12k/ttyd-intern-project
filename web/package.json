@@ -1,0 +1,13 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "description": "Node.js on Docker",
+  "author": "colin mccririck <colin.mccririck@gmail.com>",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}

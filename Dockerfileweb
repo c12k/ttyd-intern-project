@@ -1,0 +1,6 @@
+FROM node:8
+COPY ./web/package*.json ./
+RUN npm install
+COPY ./web .
+EXPOSE 8080
+CMD [ "npm", "start" ]
