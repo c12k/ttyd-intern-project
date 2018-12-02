@@ -6,14 +6,14 @@ Learning objectives include:
 * Learn teamwork across modules in a project
 
 # Website
-* should be responsive
+* should be responsive and be able to run and display well on mobile
 * feature should include signup, login, load csv file, view file, graph file
 * should be written in Javascript, nodeJS, HTML, CSS
 
 # NLP
 * should use Rasa_NLU and RASA_CORE as the engine
-* needs to be trained on financial terminology eg simple chart of accounts terms
-* should be able to handle questions like "show my revenue for the last 3 months"
+* needs to be trained on log data eg simple web logs
+* should be able to handle questions like "how many log entries had errors"
 * should be able to return generated text as well as graph images
 * coding needs to be in Python 3
 
