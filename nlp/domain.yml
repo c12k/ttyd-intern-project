@@ -40,6 +40,6 @@ templates:
   utter_bye:
     - "bye"
   utter_facts:
-    - "bye"
+    - "here are some facts"
   utter_unknown:
     - "I don't understand"
