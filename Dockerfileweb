@@ -5,5 +5,5 @@ COPY ./web/package.json /src/package.json
 COPY ./web/package-lock.json /src/package-lock.json
 RUN npm install
 COPY ./web .
-EXPOSE 8080
+EXPOSE 3000
 CMD [ "npm", "start" ]
