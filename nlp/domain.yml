@@ -1,0 +1,45 @@
+intents:
+- hi
+- bye
+- facts
+
+entities:
+- org
+- fact
+- period
+- timeunit
+- geo
+
+slots:
+  org:
+    type: text
+  fact:
+    type: text
+  period:
+    type: text
+  timeunit:
+    type: categorical
+    values:
+    - yearly
+    - monthly
+    - weekly
+    - quarterly
+  geo:
+    type: text
+  matches:
+    type: unfeaturized
+
+actions:
+- utter_hi
+- utter_bye
+- utter_facts
+
+templates:
+  utter_hi:
+    - text: "Hi.  I can get some facts from your data."
+  utter_bye:
+    - "bye"
+  utter_facts:
+    - "bye"
+  utter_unknown:
+    - "I don't understand"

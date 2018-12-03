@@ -1,12 +1,12 @@
 FROM rasa/rasa_core:0.12.0
-ADD policy.py .
-ADD domain.yml .
-ADD endpoints.yml .
-ADD credentials.yml .
-ADD models/dialogue/ ./dialogue
-ADD data/stories.md ./data
-ADD core-config.yml .
-ADD entry-core.sh .
+ADD ./nlp/policy.py .
+ADD ./nlp/domain.yml .
+ADD ./nlp/endpoints.yml .
+ADD ./nlp/credentials.yml .
+ADD ./nlp/models/dialogue/ ./dialogue
+ADD ./nlp/data/stories.md ./data
+ADD ./nlp/core-config.yml .
+ADD ./nlp/entry-core.sh .
 EXPOSE 5005
 ENTRYPOINT ["./entry-core.sh"]
 CMD ["serve"]
