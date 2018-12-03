@@ -1,0 +1,431 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [
+      {
+        "intent": "hi",
+        "text": "good morning"
+      },
+      {
+        "intent": "hi",
+        "text": "hi"
+      },
+      {
+        "intent": "hi",
+        "text": "hello there"
+      },
+      {
+        "intent": "hi",
+        "text": "good afternoon"
+      },
+      {
+        "intent": "hi",
+        "text": "g'day"
+      },
+      {
+        "intent": "hi",
+        "text": "yo"
+      },
+      {
+        "intent": "hi",
+        "text": "hello"
+      },
+      {
+        "intent": "hi",
+        "text": "hey"
+      },
+      {
+        "intent": "hi",
+        "text": "hey dude"
+      },
+      {
+        "intent": "hi",
+        "text": "let's go"
+      },
+      {
+        "intent": "bye",
+        "text": "bye"
+      },
+      {
+        "intent": "bye",
+        "text": "good afternoon"
+      },
+      {
+        "intent": "bye",
+        "text": "goodbye"
+      },
+      {
+        "intent": "bye",
+        "text": "see you later"
+      },
+      {
+        "intent": "bye",
+        "text": "see you around"
+      },
+      {
+        "intent": "bye",
+        "text": "c you later"
+      },
+      {
+        "intent": "bye",
+        "text": "good by"
+      },
+      {
+        "intent": "bye",
+        "text": "good night"
+      },
+      {
+        "intent": "bye",
+        "text": "cu"
+      },
+      {
+        "intent": "bye",
+        "text": "have a nice day"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 16,
+            "entity": "fact",
+            "start": 9,
+            "value": "expense"
+          },
+          {
+            "end": 28,
+            "entity": "org",
+            "start": 21,
+            "value": "Finance"
+          },
+          {
+            "end": 44,
+            "entity": "period",
+            "start": 37,
+            "value": "in 2015"
+          }
+        ],
+        "text": "how much expense did Finance make in in 2015"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 18,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "weekly"
+          },
+          {
+            "end": 26,
+            "entity": "fact",
+            "start": 19,
+            "value": "revenue"
+          },
+          {
+            "end": 62,
+            "entity": "geo",
+            "start": 56,
+            "value": "Brazil"
+          }
+        ],
+        "text": "what is the weekly revenue for the latest 12 months for Brazil"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 11,
+            "entity": "timeunit",
+            "start": 5,
+            "value": "yearly"
+          },
+          {
+            "end": 24,
+            "entity": "fact",
+            "start": 12,
+            "value": "gross profit"
+          }
+        ],
+        "text": "show yearly gross profit"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 12,
+            "entity": "timeunit",
+            "start": 5,
+            "value": "monthly"
+          },
+          {
+            "end": 23,
+            "entity": "fact",
+            "start": 13,
+            "value": "financials"
+          }
+        ],
+        "text": "show monthly financials"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 23,
+            "entity": "fact",
+            "start": 13,
+            "value": "financials"
+          },
+          {
+            "end": 31,
+            "entity": "org",
+            "start": 24,
+            "value": "Product"
+          },
+          {
+            "end": 56,
+            "entity": "period",
+            "start": 36,
+            "value": "the year before last"
+          }
+        ],
+        "text": "tell me what financials Product had the year before last"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 18,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "weekly"
+          },
+          {
+            "end": 26,
+            "entity": "fact",
+            "start": 19,
+            "value": "expense"
+          },
+          {
+            "end": 38,
+            "entity": "period",
+            "start": 31,
+            "value": "in 2016"
+          }
+        ],
+        "text": "what is the weekly expense for in 2016"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 11,
+            "entity": "timeunit",
+            "start": 5,
+            "value": "yearly"
+          },
+          {
+            "end": 22,
+            "entity": "fact",
+            "start": 12,
+            "value": "net profit"
+          },
+          {
+            "end": 61,
+            "entity": "period",
+            "start": 54,
+            "value": "in 2016"
+          }
+        ],
+        "text": "show yearly net profit for BHP for USA for year ended in 2016"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 12,
+            "entity": "fact",
+            "start": 5,
+            "value": "expense"
+          },
+          {
+            "end": 24,
+            "entity": "org",
+            "start": 17,
+            "value": "Finance"
+          },
+          {
+            "end": 37,
+            "entity": "period",
+            "start": 30,
+            "value": "in 2015"
+          }
+        ],
+        "text": "what expense did Finance have in 2015?"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 21,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "quarterly"
+          },
+          {
+            "end": 32,
+            "entity": "fact",
+            "start": 22,
+            "value": "net profit"
+          },
+          {
+            "end": 50,
+            "entity": "period",
+            "start": 37,
+            "value": "two years ago"
+          }
+        ],
+        "text": "what is the quarterly net profit for two years ago"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 21,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "quarterly"
+          },
+          {
+            "end": 40,
+            "entity": "fact",
+            "start": 22,
+            "value": "earnings per share"
+          }
+        ],
+        "text": "what is the quarterly earnings per share for the latest 12 months"
+      },
+      {
+        "intent": "hi",
+        "text": "are you around whatsup"
+      },
+      {
+        "intent": "hi",
+        "text": "hey good day hi"
+      },
+      {
+        "intent": "hi",
+        "text": "whats up hi hey"
+      },
+      {
+        "intent": "hi",
+        "text": "hello hola"
+      },
+      {
+        "intent": "hi",
+        "text": "whatsup hello hi"
+      },
+      {
+        "intent": "hi",
+        "text": "hola how are things going hola"
+      },
+      {
+        "intent": "hi",
+        "text": "are you around? whats up"
+      },
+      {
+        "intent": "hi",
+        "text": "hola whatsup hello"
+      },
+      {
+        "intent": "hi",
+        "text": "whatsup howdy hola"
+      },
+      {
+        "intent": "hi",
+        "text": "hi hey hi"
+      },
+      {
+        "intent": "bye",
+        "text": "ttyl adieu chau going out"
+      },
+      {
+        "intent": "bye",
+        "text": "leaving"
+      },
+      {
+        "intent": "bye",
+        "text": "talk to you soon adieu farewell gtg talk to you soon"
+      },
+      {
+        "intent": "bye",
+        "text": "bye gtg bye talk to you soon"
+      },
+      {
+        "intent": "bye",
+        "text": "have to go gtg adios im leaving now"
+      },
+      {
+        "intent": "bye",
+        "text": "goodbye goodbye adieu"
+      },
+      {
+        "intent": "bye",
+        "text": "going out gtg ttyl gtg talk to you soon"
+      },
+      {
+        "intent": "bye",
+        "text": "leaving adieu goodbye adieu going out"
+      },
+      {
+        "intent": "bye",
+        "text": "ttyl adios farewell have to go"
+      },
+      {
+        "intent": "bye",
+        "text": "im leaving now goodbye goodbye farewell talk to you soon"
+      },
+      {
+        "intent": "affirm",
+        "text": "correct"
+      },
+      {
+        "intent": "affirm",
+        "text": "you got that yes to that"
+      },
+      {
+        "intent": "affirm",
+        "text": "correct that is what i mean"
+      },
+      {
+        "intent": "affirm",
+        "text": "i want that"
+      },
+      {
+        "intent": "affirm",
+        "text": "you're goddamn yes sir"
+      },
+      {
+        "intent": "affirm",
+        "text": "yes that is si"
+      },
+      {
+        "intent": "affirm",
+        "text": "correcto"
+      },
+      {
+        "intent": "affirm",
+        "text": "affirmative allright correcto yes sir"
+      },
+      {
+        "intent": "affirm",
+        "text": "correcto right yes to that yes to that"
+      },
+      {
+        "intent": "affirm",
+        "text": "yes sir correct yes yep"
+      }
+    ],
+    "regex_features": [],
+    "lookup_tables": [],
+    "entity_synonyms": []
+  }
+}
