@@ -2,6 +2,7 @@ intents:
 - hi
 - bye
 - facts
+- affirm
 
 entities:
 - org
