@@ -1,0 +1,4 @@
+#!/bin/sh
+# Store this and the python file in ttyd-intern-project/.git/hooks  which is a hidden folder
+# Set working directory to where the script is stored.
+echo "do some things with docker"
