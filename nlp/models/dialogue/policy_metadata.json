@@ -1,0 +1,34 @@
+{
+  "action_fingerprints": {
+    "action_listen": {
+      "slots": [
+        "matches",
+        "period",
+        "fact",
+        "org"
+      ]
+    },
+    "utter_hi": {
+      "slots": []
+    },
+    "utter_bye": {
+      "slots": []
+    }
+  },
+  "rasa_core": "0.12.0",
+  "python": "3.6.7",
+  "max_histories": [
+    5,
+    null,
+    5,
+    2
+  ],
+  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
+  "policy_names": [
+    "rasa_core.policies.keras_policy.KerasPolicy",
+    "rasa_core.policies.fallback.FallbackPolicy",
+    "rasa_core.policies.memoization.MemoizationPolicy",
+    "rasa_core.policies.form_policy.FormPolicy"
+  ],
+  "trained_at": "20181204-041938"
+}

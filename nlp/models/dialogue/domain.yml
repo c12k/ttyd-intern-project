@@ -1,0 +1,63 @@
+%YAML 1.1
+---
+actions:
+- utter_hi
+- utter_bye
+- utter_facts
+config:
+  store_entities_as_slots: true
+entities:
+- org
+- fact
+- period
+- timeunit
+- geo
+forms: []
+intents:
+- hi:
+    use_entities: true
+- bye:
+    use_entities: true
+- facts:
+    use_entities: true
+- affirm:
+    use_entities: true
+slots:
+  fact:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  geo:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  matches:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.UnfeaturizedSlot
+  org:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  period:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  timeunit:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - yearly
+    - monthly
+    - weekly
+    - quarterly
+templates:
+  utter_bye:
+  - text: bye
+  utter_facts:
+  - text: here are some facts
+  utter_hi:
+  - text: Hi.  I can get some facts from your data.
+  utter_unknown:
+  - text: I don't understand

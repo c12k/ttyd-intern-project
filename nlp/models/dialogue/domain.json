@@ -1,0 +1,28 @@
+{
+  "states": [
+    "intent_affirm",
+    "intent_bye",
+    "intent_facts",
+    "intent_hi",
+    "entity_org",
+    "entity_fact",
+    "entity_period",
+    "entity_timeunit",
+    "entity_geo",
+    "slot_fact_0",
+    "slot_geo_0",
+    "slot_org_0",
+    "slot_period_0",
+    "slot_timeunit_0",
+    "slot_timeunit_1",
+    "slot_timeunit_2",
+    "slot_timeunit_3",
+    "prev_action_listen",
+    "prev_action_restart",
+    "prev_action_default_fallback",
+    "prev_action_deactivate_form",
+    "prev_utter_hi",
+    "prev_utter_bye",
+    "prev_utter_facts"
+  ]
+}
