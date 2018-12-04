@@ -1,9 +1,9 @@
 FROM rasa/rasa_nlu:0.13.7-full
 RUN python -m spacy download en_core_web_md
-ADD ./nlp/models/nlu/ projects
-ADD ./nlp/data/training.json .
-ADD ./nlp/train_nlu_config.yml .
-ADD ./nlp/entry-nlu.sh .
+COPY ./nlp/models/nlu/ projects
+COPY ./nlp/data/training.json .
+COPY ./nlp/train_nlu_config.yml .
+COPY ./nlp/entry-nlu.sh .
 EXPOSE 5000
 ENTRYPOINT ["./entry-nlu.sh"]
 CMD ["start"]
