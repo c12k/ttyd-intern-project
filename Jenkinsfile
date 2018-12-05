@@ -1,12 +1,21 @@
 pipeline {
-    agent any
-    stages {
-stage('testing pipeline'){
-          steps{
-      echo 'test1'
-                sh 'mkdir from-jenkins'
-                sh 'touch from-jenkins/test.txt'
-                }
-        }
-}
+  /* ... unchanged ... */
+  stages {
+    stage ('Start') {
+      steps {
+        // send build started notifications
+        slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+      }
+    }
+    /* ... unchanged ... */
+  }
+  post {
+    success {
+      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+
+    failure {
+      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+    }
+  }
 }
