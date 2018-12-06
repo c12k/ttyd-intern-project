@@ -24,7 +24,7 @@ agent any
         }
         catch (exc) {
              echo 'Error running web_container'
-             throw}
+         }
     }
   }
   post {
