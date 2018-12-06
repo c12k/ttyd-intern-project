@@ -4,13 +4,6 @@ var express = require('express'),
 	pg = require('pg'),
 	app = express();
 
-
-
-
-//DB connection
-var connect = 'postgres://localhost:5432/pgguide';
-var pool = new pg.Pool(connect);
-
 //set public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -18,24 +11,32 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-app.get('/', function(req, res){
-	pool.connect((err, client, done) => {
-		if (err) throw err
-		client.query('SELECT * FROM products', [1], (err, res) => {
-			done()
+//DB connection
+// const connect = 'postgres://localhost:5432/pgguide';
+const pool = new pg.Pool({
+	host: 'localhost', // 'localhost' is the default;
+	port: 5432, // 5432 is the default;
+	database: 'pgguide',
+	user: 'colin'
+})
 
-			if (err) {
-				console.log(err.stack)
-			} else {
-				console.log(res.rows[0])
-			}
-		})
-	});
-	pool.end();
+app.get('/', function (req, res) {
+	console.log('App working ok');
+	res.send('Hello from app.')
 });
 
+app.get('/db', function(req, res){
+	pool.query('SELECT id,title FROM products where id=1;')
+		.then((data) => {
+			console.log(data.rows);
+			res.status(200).json({status:'success',data:data, message:'Successful read'}); 
+		}) 
+		.catch(err => {
+			console.error('Error executing query', err.stack);
+			return err
+		})
+});
 
-//server
-app.listen(3000, function(){
+var server = app.listen(3000, function () {
 	console.log('Server Started On Port 3000');
 });
