@@ -10,8 +10,7 @@ agent any
     stage ('Web rebuild') {
         steps {
             //Stop and remove the old web_container if it exists.
-            sh 'app=web_container'
-            sh 'if docker ps | awk -v app="$app" \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker rm -f "$app"; fi'
+            sh 'if docker ps | awk -v app=web_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop web_container; echo "web_container exists, removing it."; else echo "web_container does not exist already."; fi'
             //Rebuild the image
             sh 'docker build -f ./Dockerfileweb -t webstuff:latest .'
             //Run the image and throw exception if it fails
@@ -21,8 +20,7 @@ agent any
     stage ('Postgres rebuild') {
         steps {
             //Stop and remove the old web_container if it exists.
-            sh 'app=postgres_docker'
-            sh 'if docker ps | awk -v app="$app" \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker rm -f "$app"; fi'
+            sh 'if docker ps | awk -v app=postgres_docker \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop postgres_docker; echo "postgres_docker exists, removing it."; else echo "postgres_docker did not exist"; fi'
             //Pull the postgres 11.1 image
             sh 'docker pull postgres:11.1'
             //Run the image and throw exception if it fails
