@@ -9,9 +9,9 @@ agent any
     }
     stage ('Web rebuild') {
         steps {
-            //Stop and remove the old web_container, redirecting error output if there is no existing container.
-            sh 'docker stop web_container &> /dev/null'
-            sh 'docker rm web_container &> /dev/null'
+            //Stop and remove the old web_container if it exists.
+            sh 'app=web_container'
+            sh 'if docker ps | awk -v app="$app" 'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}'; then docker stop "$app"; fi'
             //Rebuild the image
             sh 'docker build -f ./Dockerfileweb -t webstuff:latest .'
             //Run the image and throw exception if it fails
