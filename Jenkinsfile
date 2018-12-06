@@ -15,7 +15,7 @@ agent any
             //Rebuild the image
             sh 'docker build -f ./Dockerfileweb -t webstuff:latest .'
             //Run the image and throw exception if it fails
-            sh 'docker run -it --rm --name web_container webstuff'
+            sh 'docker run -td --rm --name web_container webstuff'
         }
     }
   }
