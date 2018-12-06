@@ -23,7 +23,7 @@ agent any
                 sh 'docker run -it --rm --name web_container webstuff'
         }
         catch (exc) {
-             echo exc
+             echo 'Error running web_container'
              throw
         }
     }
