@@ -18,6 +18,17 @@ agent any
             sh 'docker run -td --rm --name web_container webstuff'
         }
     }
+    stage ('Postgres rebuild') {
+        steps {
+            //Stop and remove the old web_container if it exists.
+            sh 'app=postgres_docker'
+            sh 'if docker ps | awk -v app="$app" \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop "$app"; fi'
+            //Pull the postgres 11.1 image
+            sh 'docker pull postgres:11.1'
+            //Run the image and throw exception if it fails
+            sh ' docker run --rm   --name postgres_docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v data:/var/lib/postgresql/data  postgres:11.1'
+        }
+    }
   }
   post {
     success {
