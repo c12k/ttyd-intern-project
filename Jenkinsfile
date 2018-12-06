@@ -9,22 +9,12 @@ agent any
     }
     stage ('Web rebuild') {
         //Stop and remove the old web_container
-        try {
-                sh 'docker stop web_container'
-                sh 'docker rm web_container'
-        }
-        catch (exc) {
-             echo 'No preexisting web_container'
-        }
+        sh 'docker stop web_container'
+        sh 'docker rm web_container'
         //Rebuild the image
         sh 'docker build -f ./Dockerfileweb -t webstuff:latest .'
         //Run the image and throw exception if it fails
-        try {
-                sh 'docker run -it --rm --name web_container webstuff'
-        }
-        catch (exc) {
-             echo 'Error running web_container'
-         }
+        sh 'docker run -it --rm --name web_container webstuff'
     }
   }
   post {
