@@ -55,6 +55,7 @@ agent any
         steps {
         //Run python test scripts
         sh 'python "./devops/Test scripts/web tests/test_page_status_and_hello.py" "$(docker-machine ip)" 3000'
+        sh 'python "./devops/Test scripts/nlu tests/test_nlu_page_status_and_hello.py" "$(docker-machine ip)" 5000'
         }
     }
   }
