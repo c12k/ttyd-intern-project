@@ -54,7 +54,7 @@ agent any
     stage ('Testing') {
         steps {
         //Run python test scripts
-        sh 'python "./devops/Test scripts/web tests/test_page_status_and_hello.py" "192.168.99.100" 3000'
+        sh 'python "./devops/Test scripts/web tests/test_page_status_and_hello.py" "$(docker-machine ip)" 3000'
         }
     }
   }
