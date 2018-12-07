@@ -51,6 +51,12 @@ agent any
             sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
         }
     }
+    stage ('Testing') {
+        steps {
+        //Run python test scripts
+        sh 'python "./devops/Test scripts/web tests/test_page_status_and_hello.py" "192.168.99.100" 3000'
+        }
+    }
   }
   post {
     success {
