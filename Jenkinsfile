@@ -14,17 +14,27 @@ agent any
             //Rebuild the image
             sh 'docker build -f ./Dockerfileweb -t webstuff:latest .'
             //Run the image and throw exception if it fails
-            sh 'docker run -td --rm --name web_container webstuff'
+            sh 'docker run -td -p 3000:3000 --rm --name web_container webstuff'
         }
     }
     stage ('Postgres rebuild') {
         steps {
-            //Stop and remove the old web_container if it exists.
+            //Stop and remove the old postgres_docker if it exists.
             sh 'if docker ps | awk -v app=postgres_docker \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop postgres_docker; echo "postgres_docker exists, removing it."; else echo "postgres_docker did not exist"; fi'
             //Pull the postgres 11.1 image
             sh 'docker pull postgres:11.1'
             //Run the image and throw exception if it fails
             sh 'docker run --rm --name postgres_docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v data:/var/lib/postgresql/data  postgres:11.1'
+        }
+    }
+    stage ('Rasa NLU rebuild') {
+        steps {
+            //Stop and remove the old nlu_container if it exists.
+            sh 'if docker ps | awk -v app=nlu_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop nlu_container; echo "nlu_container exists, removing it."; else echo "nlu_container did not exist"; fi'
+            //Pull the rasa_nlu 0.13.7 image
+            sh 'docker pull rasa/rasa_nlu:0.13.7-full'
+            //Run the image and throw exception if it fails
+            sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
         }
     }
   }
