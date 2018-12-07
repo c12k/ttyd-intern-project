@@ -33,8 +33,22 @@ agent any
             sh 'if docker ps | awk -v app=nlu_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop nlu_container; echo "nlu_container exists, removing it."; else echo "nlu_container did not exist"; fi'
             //Pull the rasa_nlu 0.13.7 image
             sh 'docker pull rasa/rasa_nlu:0.13.7-full'
+            //Rebuild the image
+            sh 'docker build -f ./Dockerfilenlu -t nluimage .'
             //Run the image and throw exception if it fails
             sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
+        }
+    }
+    stage ('Rasa Core rebuild') {
+        steps {
+            //Stop and remove the old nlu_container if it exists.
+            sh 'if docker ps | awk -v app=core_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop core_container; echo "core_container exists, removing it."; else echo "core_container did not exist"; fi'
+            //Pull the core 0.12.0 image
+            sh 'docker pull rasa/rasa_core:0.12.0'
+            //Rebuild the image
+            sh 'docker build -f ./Dockerfilecore -t coreimage .'
+            //Run the image and throw exception if it fails
+            sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
         }
     }
   }
