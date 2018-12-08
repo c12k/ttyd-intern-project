@@ -53,9 +53,12 @@ agent any
     }
     stage ('Testing') {
         steps {
-        //Run python test scripts
-        sh 'python "./devops/Test scripts/web tests/test_page_status_and_hello.py" "${env.TEST_HOST}" 3000'
-        sh 'python "./devops/Test scripts/nlu tests/test_nlu_page_status_and_hello.py" "${env.TEST_HOST}" 5000'
+            //Stop and remove the old nlu_container if it exists.
+            sh 'if docker ps | awk -v app=test_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop test_container; echo "test_container exists, removing it."; else echo "test_container did not exist"; fi'
+            //Rebuild the image
+            sh 'docker build -f ./Dockerfiletests -t testimage .'
+            //Run the image and throw exception if it fails
+            sh 'docker run -d -p 80:80 --rm --name test_container testimage'
         }
     }
   }
