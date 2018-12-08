@@ -39,7 +39,7 @@ pipeline {
     stage('Testing') {
       steps {
         sh 'python "./devops/Test scripts/web tests/test_page_status_and_hello.py" "localhost" 3000'
-        sh 'python "./devops/Test scripts/nlu tests/test_nlu_page_status_and_hello.py" "${env.TEST_HOST}" 5000'
+        sh 'python "./devops/Test scripts/nlu tests/test_nlu_page_status_and_hello.py" "localhost" 5000'
       }
     }
   }
