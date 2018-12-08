@@ -1,6 +1,7 @@
 FROM python:3
-COPY "./devops/Test scripts/nlu tests/" .
-COPY "./devops/Test scripts/web tests/" .
-COPY "./devops/Test scripts/run-tests.sh" .
+COPY ./devops/Test-scripts/nlu-tests/ .
+COPY ./devops/Test-scripts/web-tests/ .
+COPY ./devops/Test-scripts/run-tests.sh .
 EXPOSE 80
-CMD [ "python", "run-tests.py" , "localhost"]
+ENTRYPOINT ["./run-tests.sh", "localhost"]
+
