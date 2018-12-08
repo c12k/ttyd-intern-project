@@ -7,6 +7,7 @@ COPY ./nlp/models/dialogue/ ./dialogue
 COPY ./nlp/data/stories.md ./data
 COPY ./nlp/core-config.yml .
 COPY ./nlp/entry-core.sh .
+COPY ./nlp/.gitattributes .
 EXPOSE 5005
 ENTRYPOINT ["./entry-core.sh"]
 CMD ["serve"]

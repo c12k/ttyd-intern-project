@@ -4,6 +4,7 @@ COPY ./nlp/models/nlu/ projects
 COPY ./nlp/data/training.json .
 COPY ./nlp/train_nlu_config.yml .
 COPY ./nlp/entry-nlu.sh .
+COPY ./nlp/.gitattributes .
 EXPOSE 5000
 ENTRYPOINT ["./entry-nlu.sh"]
 CMD ["start"]
