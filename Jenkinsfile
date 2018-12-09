@@ -10,14 +10,12 @@ pipeline {
       steps {
         sh 'if docker ps | awk -v app=web_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop web_container; echo "web_container exists, removing it."; else echo "web_container does not exist already."; fi'
         sh 'docker build -f ./Dockerfileweb -t webstuff:latest .'
-        sh 'docker run -td -p 3000:3000 --rm --name web_container webstuff'
       }
     }
     stage('Postgres rebuild') {
       steps {
         sh 'if docker ps | awk -v app=postgres_docker \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop postgres_docker; echo "postgres_docker exists, removing it."; else echo "postgres_docker did not exist"; fi'
         sh 'docker pull postgres:11.1'
-        sh 'docker run --rm --name postgres_docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v data:/var/lib/postgresql/data  postgres:11.1'
       }
     }
     stage('Rasa NLU rebuild') {
@@ -25,7 +23,6 @@ pipeline {
         sh 'if docker ps | awk -v app=nlu_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop nlu_container; echo "nlu_container exists, removing it."; else echo "nlu_container did not exist"; fi'
         sh 'docker pull rasa/rasa_nlu:0.13.7-full'
         sh 'docker build -f ./Dockerfilenlu -t nluimage .'
-        sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
       }
     }
     stage('Rasa Core rebuild') {
@@ -33,11 +30,14 @@ pipeline {
         sh 'if docker ps | awk -v app=core_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop core_container; echo "core_container exists, removing it."; else echo "core_container did not exist"; fi'
         sh 'docker pull rasa/rasa_core:0.12.0'
         sh 'docker build -f ./Dockerfilecore -t coreimage .'
-        sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
       }
     }
     stage('Testing') {
       steps {
+        sh 'docker run -td -p 3000:3000 --rm --name web_container webstuff'
+        sh 'docker run --rm --name postgres_docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v data:/var/lib/postgresql/data  postgres:11.1'
+        sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
+        sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
         sh 'if docker ps | awk -v app=test_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop test_container; echo "test_container exists, removing it."; else echo "test_container did not exist"; fi'
         sh 'docker build -f ./Dockerfiletests -t testimage .'
         sh 'docker run -d -p 80:80 --rm --name test_container testimage'
