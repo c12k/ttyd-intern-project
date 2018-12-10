@@ -1,5 +1,6 @@
 #!/usr/bin/python
-# import Online Retail.csv data into postgres database table
+# test python access to postgres DB
+import pandas as pd
 import psycopg2
 
 
@@ -17,10 +18,9 @@ def connect():
         print('Connecting to the PostgreSQL database...')
         conn = psycopg2.connect(params)
         cur = conn.cursor()
-        print('drop & create:')
-        cur.execute('DROP DATABASE IF EXISTS ttyd')
-        cur.execute('CREATE DATABASE ttyd')
-        print('success')
+        cur.execute( 'select * from txn group by invoicedate order by invoicedate;')
+        inv = pd.DataFrame(cur.fetchall())
+        print(inv)
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
