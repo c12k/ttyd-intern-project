@@ -4,4 +4,6 @@ RUN curl -o /tmp/filebeat_1.0.1_amd64.deb https://download.elastic.co/beats/file
 COPY filebeat.yml /etc/filebeat/filebeat.yml
 COPY ["entrypoint.sh", "/"]
 RUN chmod +x /entrypoint.sh
+EXPOSE 8080
+EXPOSE 50000
 ENTRYPOINT ["/bin/bash","-c","./entrypoint.sh"]
