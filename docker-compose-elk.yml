@@ -1,0 +1,31 @@
+version: "3.1"
+
+services:
+
+  logstash:
+    image: logstashimage
+    volumes:
+          - ./:/config
+    command: logstash -f /usr/share/logstash/pipeline/logstash.conf
+    links:
+      - elasticsearch
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5044:5044"
+
+  elasticsearch:
+    image: elasticsearch:6.5.2
+    ports:
+      - "9200:9200"
+
+  kibana:
+    image: kibana:6.5.2
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch
+    environment:
+        ELASTICSEARCH_URL: http://elasticsearch:9200
+    depends_on:
+      - elasticsearch

@@ -2,8 +2,8 @@ filebeat:
   prospectors:
     -
       paths:
-        - "/var/jenkins_home/jobs/*/builds/*/log"
+        - /var/jenkins_home/jobs/*/branches/*/builds/*/log
 
 output:
   logstash:
-        hosts: ["logstash:5044"]
+        hosts: ["192.168.99.100:5044"]
