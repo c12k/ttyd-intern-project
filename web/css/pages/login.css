@@ -1,0 +1,70 @@
+.login {
+    overflow: hidden;
+    
+    min-height: 100vh;
+    background-image: url(../../img/login/register-bg.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 0;
+}
+
+.login .logo {
+  margin: 60px auto 20px auto;
+  padding: 15px;
+  text-align: center;
+ }
+
+.login .content {
+  width: 360px;
+  margin: 0 auto;
+  background:url(../../img/login/bg-white-lock.png);
+  margin-bottom: 0px;
+  padding: 30px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px; }
+
+.login .content h3 {
+  color: #eee; }
+
+.login .content h4 {
+  color: #eee; }
+.login .logo{
+    color:aliceblue;
+}
+
+.login .content p,
+.login .content label {
+  color: #fff; }
+
+
+
+
+
+
+
+
+
+/* select2 dropdowns */
+
+
+
+
+
+@media (max-width: 480px) {
+  /***
+  Login page
+  ***/
+  .login .logo {
+    margin-top: 10px; }
+  .login .content {
+    padding: 30px;
+    width: 222px; }
+  .login .content h3 {
+    font-size: 22px; }
+  .login .checkbox {
+    font-size: 13px; } }
