@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <title>test project</title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/3.3.4/css/bootstrap2/bootstrap-switch.min.css">
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <!-- theme styles -->
+        <link href="../css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="../css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="../plugins/bootstrap-fileinput/bootstrap-fileinput.css" rel="stylesheet" type="text/css" />
+        <link href="../css/layout.css" rel="stylesheet" type="text/css" />
+        <link href="../css/themes/blue.min.css" rel="stylesheet" type="text/css" id="style_color" />
+        <link href="../css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="../css/pages/upload.css" rel="stylesheet" type="text/css"/>
+        <link rel="shortcut icon" href="favicon.ico">
+    </head>
+    <body class="page-header-fixed page-container-bg-solid">
+        <!-- BEGIN HEADER -->
+        <div class="page-header navbar navbar-fixed-top">
+            <!-- BEGIN HEADER INNER -->
+            <div class="page-header-inner ">
+                <!-- BEGIN LOGO -->
+                <div class="page-logo">
+                    <h3>Talk To Your Data</h3>
+                </div>
+                <!-- END LOGO -->
+                <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+                <!-- END RESPONSIVE MENU TOGGLER -->
+
+                <!-- BEGIN PAGE TOP -->
+                <div class="page-top">
+
+                    <!-- BEGIN TOP NAVIGATION MENU -->
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="dropdown dropdown-user">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                    <span class="username username-hide-on-mobile"> Account </span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                                <span class="sr-only"><a href="../index.html">Toggle Quick Sidebar</a></span>
+                                <i class="icon-logout"></i>
+                            </li>
+                            <!-- END QUICK SIDEBAR TOGGLER -->
+                        </ul>
+                    </div>
+                    <!-- END TOP NAVIGATION MENU -->
+                </div>
+                <!-- END PAGE TOP -->
+            </div>
+            <!-- END HEADER INNER -->
+        </div>
+        <div class="clearfix"> </div>
+        <!-- END HEADER & CONTENT DIVIDER -->
+        <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+            <!-- BEGIN SIDEBAR -->
+            <div class="page-content-wrapper">
+                <div class="page-content">
+                    <h1 class="page-title">File Input</h1>
+                    <div class="row">
+                <div class="col-md-12">
+                    <!-- BEGIN PORTLET-->
+                    <div class="portlet light form-fit ">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                
+                                <span class="caption-subject font-green">Please choose CSV file from your computer</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body form">
+                            <!-- BEGIN FORM-->
+                            <form action="#" class="form-horizontal form-bordered">
+                                <div class="form-body">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Input</label>
+                                        <div class="col-md-3">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                <div class="input-group input-large">
+                                                    <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                                        <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                                        <span class="fileinput-filename"> </span>
+                                                    </div>
+                                                    <span class="input-group-addon btn default btn-file">
+                                                        <span class="fileinput-new"> Select file </span>
+                                                        <span class="fileinput-exists"> Change </span>
+                                                        <input type="file" name="..."> </span>
+                                                    <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Uploaded File</label>
+                                        <div class="col-md-9">
+                                            <div class="fileinput fileinput-new" data-provides="fileinput">
+
+                                                <span class="fileinput-filename"> </span> &nbsp;
+                                                <a href="javascript:;" class="close fileinput-exists" data-dismiss="fileinput"> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <a href="javascript:;" class="btn green">
+                                                    <i class="fa fa-check"></i> Submit</a>
+                                                <a href="javascript:;" class="btn btn-outline grey-salsa">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+            </div>
+        <div>
+            </div>
+        </div>
+    </body>
+</html>
