@@ -50,8 +50,7 @@ pipeline {
       // Equivalent to "docker build -f Dockerfile --build-arg version=1.0.2 .
         dockerfile {
           filename 'Dockerfiletests'
-          label 'test_container'
-          additionalBuildArgs  '--rm --network=jenkins_test_network'
+          additionalBuildArgs  '--rm --network=jenkins_test_network --name test_container'
           args '-p 80:80'
         }
       }
