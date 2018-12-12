@@ -4,7 +4,7 @@
   "description": "Node.js on Docker",
   "main": "app.js",
   "scripts": {
-    "start": "node.app"
+    "start": "node app.js"
   },
   "author": "colin mccririck <colin.mccririck@gmail.com>",
   "license": "ISC",
