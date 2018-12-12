@@ -72,7 +72,7 @@ pipeline {
     }
 
     cleanup {
-      sh 'docker rm -f jenkins_test_network'
+      sh 'docker network rm jenkins_test_network'
       sh 'docker stop test_container'
     }
   }
