@@ -50,7 +50,7 @@ pipeline {
       // Equivalent to "docker build -f Dockerfile --build-arg version=1.0.2 .
         dockerfile {
           filename 'Dockerfiletests'
-          additionalBuildArgs  '--rm --network=jenkins_test_network --name test_container'
+          additionalBuildArgs  '--rm --network=jenkins_test_network'
           args '-p 80:80'
         }
       }
@@ -72,8 +72,11 @@ pipeline {
     }
 
     cleanup {
+      sh 'docker stop web_container'
+      sh 'docker stop postgres_docker'
+      sh 'docker stop nlu_container'
+      sh 'docker stop core_container'
       sh 'docker network rm jenkins_test_network'
-      sh 'docker stop test_container'
     }
   }
 }
