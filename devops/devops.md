@@ -15,4 +15,28 @@ docker run \
   -p 50000:50000 \
   -v jenkins-data:/var/jenkins_home \
   -v /var/run/docker.sock:/var/run/docker.sock \
+  --name jenkins_container \
   jenkinsci/blueocean
+  
+  # Starting ELK stack in docker
+  docker pull down from
+  - docker.elastic.co/beats/filebeat:6.5.2
+  - docker.elastic.co/logstash/logstash:6.5.2
+  - docker.elastic.co/elasticsearch/elasticsearch:6.5.2
+  - docker.elastic.co/kibana/kibana:6.5.2
+  
+  Build the custom images, filebeatimage and logstashimage, with Dockerfilefilebeat and Dockerfilelogstash.
+  - docker build -f Dockerfilefilebeat filebeatimage .
+  - docker build -f Dockerfilelogstash logstashimage .
+  
+  These put filebeat.yml and logstash.conf into the containers in the right places.
+  
+  
+  Start the ELK stack with:
+  - docker-compose -f docker-compose-elk.yml up
+  
+  This creates a network that filebeat will need to join.
+  
+  
+  Start jenkins_container using the section above and if successful, run filebeat with:
+  - docker run --rm --name filebeat_container --volumes-from jenkins_container:ro --network=ttydinternproject_default filebeatimage
