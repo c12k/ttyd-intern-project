@@ -32,15 +32,32 @@ pipeline {
         sh 'docker build -f ./Dockerfilecore -t coreimage .'
       }
     }
-    stage('Testing') {
+    stage('Setup for Tests') {
       steps {
         sh 'docker run -td -p 3000:3000 --rm --name web_container webstuff'
         sh 'docker run --rm --name postgres_docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v data:/var/lib/postgresql/data  postgres:11.1'
         sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
         sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
-        sh 'if docker ps | awk -v app=test_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop test_container; echo "test_container exists, removing it."; else echo "test_container did not exist"; fi'
-        sh 'docker build -f ./Dockerfiletests -t testimage .'
-        sh 'docker run -d -p 80:80 --rm --name test_container testimage'
+        sh 'docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 jenkins_test_network'
+        sh 'docker network connect --ip 172.28.5.1 jenkins_test_network web_container'
+        sh 'docker network connect --ip 172.28.5.2 jenkins_test_network postgres_docker'
+        sh 'docker network connect --ip 172.28.5.3 jenkins_test_network nlu_container'
+        sh 'docker network connect --ip 172.28.5.4 jenkins_test_network core_container'
+      }
+    }
+    stage('Testing') {
+      agent {
+      // Equivalent to "docker build -f Dockerfile --build-arg version=1.0.2 .
+        dockerfile {
+          filename 'Dockerfiletests'
+          label 'test_container'
+          additionalBuildArgs  '--rm --network=jenkins_test_network'
+          args '-p 80:80'
+        }
+      }
+      steps {
+        sh 'python test_page_status_and_hello.py 172.28.5.1 3000'
+        sh 'python test_nlu_page_status_and_hello.py 172.28.5.1 5000'
       }
     }
   }
@@ -55,5 +72,9 @@ pipeline {
 
     }
 
+    cleanup {
+      sh 'docker rm -f jenkins_test_network'
+      sh 'docker stop test_container'
+    }
   }
 }
