@@ -1,9 +1,9 @@
 FROM node:10
 RUN mkdir /src
 WORKDIR /src
-COPY ./web/package.json /src/package.json
-COPY ./web/package-lock.json /src/package-lock.json
-RUN npm install pg
-COPY ./web .
+COPY ./web/web-1.0/package.json /src/package.json
+COPY ./web/web-1.0/package-lock.json /src/package-lock.json
+RUN npm install
+COPY ./web/web-1.0/ .
 EXPOSE 3000
 CMD [ "npm", "start" ]
