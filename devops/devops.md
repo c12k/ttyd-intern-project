@@ -32,6 +32,11 @@ docker run \
   These put filebeat.yml and logstash.conf into the containers in the right places.
   
   
+  Elasticsearch requires more than 1GB of RAM so increase the memory if using a VM and run these commands if you need to (the first is for those using docker-toolbox):
+  - docker-machine ssh
+  - sudo sysctl -w vm.max_map_count=262144
+  
+  
   Start the ELK stack with:
   - docker-compose -f docker-compose-elk.yml up
   
