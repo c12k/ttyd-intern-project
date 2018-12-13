@@ -34,30 +34,31 @@ pipeline {
     }
     stage('Setup for Tests') {
       steps {
+        // Run all the containers
         sh 'docker run -td -p 3000:3000 --rm --name web_container webstuff'
         sh 'docker run --rm --name postgres_docker -e POSTGRES_PASSWORD=docker -d -p 5432:5432 -v data:/var/lib/postgresql/data  postgres:11.1'
         sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
         sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
+        // Create a network and connect the images to it (core container only if it still exists)
         sh 'docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 jenkins_test_network'
         sh 'docker network connect --ip 172.28.5.1 jenkins_test_network web_container'
         sh 'docker network connect --ip 172.28.5.2 jenkins_test_network postgres_docker'
         sh 'docker network connect --ip 172.28.5.3 jenkins_test_network nlu_container'
         sh 'if docker ps | awk -v app=core_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker network connect --ip 172.28.5.4 jenkins_test_network core_container; echo "core_container exists, adding to network."; else echo "core_container did not exist"; fi'
+        // Rebuild the test image
+        sh 'docker build -f Dockerfiletests -t testimage'
       }
     }
     stage('Testing') {
       agent {
-      // Equivalent to "docker build -f Dockerfile --build-arg version=1.0.2 .
-        dockerfile {
-          filename 'Dockerfiletests'
-          additionalBuildArgs  '--rm --network=jenkins_test_network'
-          args '-p 80:80'
+        docker {
+          image 'testimage'
+          args '-p 80:80 --rm --network=jenkins_test_network'
         }
       }
       steps {
         sh 'python ./devops/Test-scripts/web-tests/test_page_status_and_hello.py 172.28.5.1 3000'
-        sh 'ls'
-        sh 'python ./devops/Test-scripts/web-tests/test_nlu_page_status_and_hello.py 172.28.5.1 5000'
+        sh 'python ./devops/Test-scripts/web-tests/test_nlu_page_status_and_hello.py 172.28.5.3 5000'
       }
     }
   }
@@ -73,6 +74,7 @@ pipeline {
     }
 
     cleanup {
+      // Disconnect all containers from the test network and remove the network
       sh 'if docker ps | awk -v app=web_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop web_container; echo "web_container exists, removing it."; else echo "web_container does not exist already."; fi'
       sh 'if docker ps | awk -v app=postgres_docker \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop postgres_docker; echo "postgres_docker exists, removing it."; else echo "postgres_docker did not exist"; fi'
       sh 'if docker ps | awk -v app=nlu_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop nlu_container; echo "nlu_container exists, removing it."; else echo "nlu_container did not exist"; fi'
