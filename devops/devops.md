@@ -26,8 +26,8 @@ docker run \
   - docker.elastic.co/kibana/kibana:6.5.2
   
   Build the custom images, filebeatimage and logstashimage, with Dockerfilefilebeat and Dockerfilelogstash.
-  - docker build -f Dockerfilefilebeat filebeatimage .
-  - docker build -f Dockerfilelogstash logstashimage .
+  - docker build -f Dockerfilefilebeat -t filebeatimage .
+  - docker build -f Dockerfilelogstash -t logstashimage .
   
   These put filebeat.yml and logstash.conf into the containers in the right places.
   
