@@ -58,7 +58,7 @@ pipeline {
       }
       steps {
         sh 'python ./devops/Test-scripts/web-tests/test_page_status_and_hello.py 172.28.5.1 3000'
-        sh 'python ./devops/Test-scripts/web-tests/test_nlu_page_status_and_hello.py 172.28.5.3 5000'
+        sh 'python ./devops/Test-scripts/nlu-tests/test_nlu_page_status_and_hello.py 172.28.5.3 5000'
       }
     }
   }
