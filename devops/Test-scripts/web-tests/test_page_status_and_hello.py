@@ -13,8 +13,4 @@ print("Status: {} and reason: {}".format(response.status, response.reason))
 if (response.status != 200):
     raise Exception("The page status is not 200 Ok")
 else:
-    content = response.read().decode("utf-8")
-    if (content != "Hello from app."):
-        raise Exception("Page content '{}' is not the expected 'Hello from app.'", content)
-    else:
-        exit(0)
+    exit(0)
