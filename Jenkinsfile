@@ -53,7 +53,7 @@ pipeline {
       agent {
         docker {
           image 'testimage'
-          args '-p 80:80 --rm --network=jenkins_test_network'
+          args '-p 80:80 --network=jenkins_test_network'
         }
       }
       steps {
