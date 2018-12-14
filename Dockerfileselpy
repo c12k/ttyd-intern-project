@@ -1,0 +1,15 @@
+FROM selenium/standalone-firefox
+USER root
+COPY ./devops/get-pip.py .
+RUN sudo -H python3 get-pip.py
+RUN sudo -H pip install --user pipenv
+RUN sudo pip3 install pytest
+RUN sudo pip3 install selenium
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.23.0/geckodriver-v0.23.0-linux64.tar.gz
+RUN tar -xvzf geckodriver*
+RUN chmod +x geckodriver
+RUN sudo mv geckodriver /usr/local/bin/
+USER seluser
+RUN sudo touch geckodriver.log
+RUN sudo chmod 777 geckodriver.log
+COPY ./devops/Test-scripts/web-tests/ .
