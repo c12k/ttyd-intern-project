@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Flask API test harness</title>
+  </head>
+  <body>
+    <h2>API tests</h2>
+    <form method="POST" action="">
+      URL to test API (eg localhost:3000/api) <input type="text" name="url">
+      <br>
+      Text message to pass as parameter <input type="text" name="msg">
+      <br>
+      <input type="submit" name="getAPI" value="getAPI">
+      <input type="submit" name="postAPI" value="postAPI">
+    </form>
+    <h2>Result:</h2>
+      <pre><code class="prettyprint">{{responsemsg}}</code></pre>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </body>
+</html>
