@@ -9,6 +9,9 @@ log = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app)
 
+# display the default form index.html
+# and handle the posting of the form to test call API's
+# based on fields on the form (url, text)
 @app.route('/', methods=['GET', 'POST'])
 def index():
     msg = "test message"
@@ -61,6 +64,22 @@ def index():
 def health():
     msg = 'API app is healthy ok.'
     return render_template('index.html', responsemsg=msg)
+
+# some simple API's that can be called from other programs
+@app.route('/api1', methods=['GET'])
+def api1():
+    msg = 'API 1 is working.'
+    return msg
+
+@app.route('/api2', methods=['GET'])
+def api2():
+    msg = 'API 2 is working.'
+    return msg
+
+@app.route('/api3', methods=['POST'])
+def api3():
+    msg = 'API 3 POST call is working.'
+    return msg
 
 if __name__ == "__main__":
     handler = logging.StreamHandler()
