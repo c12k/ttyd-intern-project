@@ -1,8 +1,11 @@
 filebeat:
-  prospectors:
-    -
-      paths:
-        - /var/jenkins_home/jobs/*/branches/*/builds/*/log
+  inputs:
+    - paths:
+      - /var/jenkins_home/jobs/*/branches/*/builds/*/log
+      document_type: jenkinslog
+    - type: docker
+      containers.ids: '*'
+      document_type: docker     
 
 output:
   logstash:
