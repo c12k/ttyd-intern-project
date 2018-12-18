@@ -44,4 +44,4 @@ docker run \
   
   
   Start jenkins_container using the section above and if successful, run filebeat with:
-  - docker run --rm --name filebeat_container --volumes-from jenkins_container:ro --network=ttydinternproject_default filebeatimage
+  - docker run --rm --name filebeat_container --volumes-from jenkins_container:ro -v /var/lib/docker:/var/lib/docker --network=ttydinternproject_default filebeatimage

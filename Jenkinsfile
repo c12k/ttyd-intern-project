@@ -46,19 +46,12 @@ pipeline {
         sh 'docker network connect --ip 172.28.5.3 jenkins_test_network nlu_container'
         // sh 'if docker ps | awk -v app=core_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker network connect --ip 172.28.5.4 jenkins_test_network core_container; echo "core_container exists, adding to network."; else echo "core_container did not exist"; fi'
         // Rebuild the test image
-        sh 'docker build -f Dockerfiletests -t testimage .'
+        sh 'docker build -f Dockerfileselpy -t selpyimage .'
       }
     }
     stage('Testing') {
-      agent {
-        docker {
-          image 'testimage'
-          args '-p 80:80 --network=jenkins_test_network'
-        }
-      }
       steps {
-        sh 'python ./devops/Test-scripts/web-tests/test_page_status_and_hello.py 172.28.5.1 3000'
-        sh 'python ./devops/Test-scripts/nlu-tests/test_nlu_page_status_and_hello.py 172.28.5.3 5000'
+        sh 'docker run -p 80:80 --rm --name selpy_container --network=jenkins_test_network selpyimage'
       }
     }
   }
