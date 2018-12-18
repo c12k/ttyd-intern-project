@@ -13,3 +13,6 @@ USER seluser
 RUN sudo touch geckodriver.log
 RUN sudo chmod 777 geckodriver.log
 COPY ./devops/Test-scripts/web-tests/ .
+COPY ./devops/Test-scripts/nlu-tests/ .
+COPY ./devops/Selenium/start-python-scripts.sh .
+ENTRYPOINT ["./start-python-scripts.sh"]
