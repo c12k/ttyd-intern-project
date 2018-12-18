@@ -50,15 +50,8 @@ pipeline {
       }
     }
     stage('Testing') {
-      agent {
-        docker {
-          image 'selpyimage'
-          args '-p 80:80 --network=jenkins_test_network'
-        }
-      }
       steps {
-        sh 'python3 ./test_web_page_selenium_pytest.py'
-        sh 'python3 ./test_nlu_page_selenium_pytest.py'
+        sh 'docker run -p 80:80 --rm --name selpy_container --network=jenkins_test_network selpyimage'
       }
     }
   }
