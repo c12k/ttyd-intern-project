@@ -56,6 +56,9 @@ pipeline {
           args '-p 80:80 --network=jenkins_test_network'
         }
       }
+      steps {
+        sh 'echo "I should be running tests"'
+      }
     }
   }
   post {
