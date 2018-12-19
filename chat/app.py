@@ -11,10 +11,31 @@ app = Flask(__name__)
 CORS(app)
 
 
-def callmsgapi(msg):
-    t = '{0:%H:%M:%S}'.format(datetime.datetime.now())
-    response = t + " blah blah"
-    return response
+def callmsgapi(uid, msg):
+    url = "http://172.28.5.3:5005/webhooks/rest/webhook"
+    h = {"Content-Type": "application/json"}
+    if uid == None:
+        uid = "me"
+    if msg == None:
+        msg = "hello"
+    d = json.dumps({'sender': uid, 'message': msg})
+    log.info('== Calling with {}'.format(d))
+    try:
+        resp = requests.post(url, data=d, headers=h)
+    except Exception as e:
+        log.info('== Error {}'.format(e))
+        return 'Error calling API {}'.format(e)
+    if(resp.ok):
+        data = json.loads(resp.content)
+        log.info('== Response {}'.format(data))
+        if len(data) > 0:
+            msgout = data[0]['text']
+        else:
+            msgout = 'empty response'
+    else:
+        log.info('== Error {}'.format(resp.text))
+        return 'Error calling API {}'.format(resp.text)
+    return msgout
 
 @app.route('/', methods=['GET'])
 def index():
@@ -23,11 +44,11 @@ def index():
 
 @app.route('/', methods=['POST'])
 def callnlp():
-    reqmsg = "{'" + request.form['uid'] + "' , '" + request.form['message'] + "'}"
-    msg =  'user: {}'.format(reqmsg)
+    msg = 'user: {}'.format(request.form['message'])
     msgs.append(msg)
-    respmsg = callmsgapi(msg)
-    msg = 'Response: {}'.format(respmsg)
+    respmsg = callmsgapi(request.form['uid'], request.form['message'])
+    t = '{0:%H:%M:%S}'.format(datetime.datetime.now())
+    msg = 'Response: {} {}'.format(t,respmsg)
     msgs.append(msg)
     return render_template('index.html', responsemsg=msgs)
 
