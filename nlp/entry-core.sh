@@ -16,16 +16,16 @@ case ${1} in
         exec python -m rasa_core.run -d ./dialogue -u ./nlu --endpoints endpoints.yml "${@:2}"
         ;;
     serve)
-        exec python -m rasa_core.run -d ./dialogue --enable_api --endpoints endpoints.yml --nlu ai2/v1 --port 5005 --cors "*" --credentials credentials.yml
+        exec python -m rasa_core.run -d ./dialogue --enable_api --endpoints endpoints.yml --nlu ttyd/v1 --port 5005 --cors "*" --credentials credentials.yml
         ;;
     debug)
-        exec python -m rasa_core.run -d ./dialogue --debug --enable_api --response_log logs --endpoints endpoints.yml --nlu ai2/v1 --port 5005 --cors "*" --credentials credentials.yml
+        exec python -m rasa_core.run -d ./dialogue --debug --enable_api --response_log logs --endpoints endpoints.yml --nlu ttyd/v1 --port 5005 --cors "*" --credentials credentials.yml
         ;;
     run)
         exec "${@:2}"
         ;;
     trainnlu)
-        exec python -m rasa_nlu.train -c train_nlu_config.yml -d data/training.json -o ./nlu --fixed_model_name="v1" --project ai2
+        exec python -m rasa_nlu.train -c train_nlu_config.yml -d data/training.json -o ./nlu --fixed_model_name="v1" --project ttyd
         ;;
     trainchat)
         exec python -m rasa_core.train -s ./data/stories.md -d ./domain.yml -o ./dialogue -c core-config.yml
