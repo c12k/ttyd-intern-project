@@ -44,6 +44,7 @@ pipeline {
         sh 'docker network connect --ip 172.28.5.1 jenkins_test_network web_container'
         sh 'docker network connect --ip 172.28.5.2 jenkins_test_network data_container'
         sh 'docker network connect --ip 172.28.5.3 jenkins_test_network nlu_container'
+        sh 'docker network connect --ip 172.28.5.4 jenkins_test_network core_container'
         // sh 'if docker ps | awk -v app=core_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker network connect --ip 172.28.5.4 jenkins_test_network core_container; echo "core_container exists, adding to network."; else echo "core_container did not exist"; fi'
         // Rebuild the test image
         sh 'docker build -f Dockerfileselpy -t selpyimage .'
