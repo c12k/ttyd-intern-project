@@ -2,10 +2,10 @@
   "action_fingerprints": {
     "action_listen": {
       "slots": [
+        "org",
         "matches",
-        "period",
         "fact",
-        "org"
+        "period"
       ]
     },
     "utter_hi": {
@@ -30,5 +30,5 @@
     "rasa_core.policies.memoization.MemoizationPolicy",
     "rasa_core.policies.form_policy.FormPolicy"
   ],
-  "trained_at": "20181204-041938"
+  "trained_at": "20181219-062018"
 }
