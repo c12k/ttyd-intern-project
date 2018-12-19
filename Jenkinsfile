@@ -36,7 +36,7 @@ pipeline {
       steps {
         // Run all the containers
         sh 'docker run -td -p 3000:3000 --rm --name web_container webstuff'
-        sh 'docker run -d -p 80:80 --rm --name data_container'
+        sh 'docker run -d -p 80:80 --rm --name data_container dataimage'
         sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
         sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
         // Create a network and connect the images to it (core container only if it still exists)
