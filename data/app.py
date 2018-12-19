@@ -55,7 +55,7 @@ def gettxnbyProduct(prod='22727'):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    msg = msg = 'csv loaded, {} rows'.format(
+    msg = 'csv loaded, {} rows'.format(
         df.shape[0]) + '\n sample rows: \n {}'.format(df.head(2))
     return render_template('index.html', responsemsg=msg)
 

@@ -1,0 +1,8 @@
+FROM python:3
+SHELL ["/bin/bash", "-c"]
+WORKDIR /app
+ADD chat/requirements.txt .
+RUN pip install -r requirements.txt
+ADD chat .
+EXPOSE 80
+CMD ["python", "-u", "app.py"]

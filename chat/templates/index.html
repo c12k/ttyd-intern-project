@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Chat API test harness</title>
+  </head>
+  <body>
+    <h2>Input uid and text message</h2>
+    <form method="POST" action="">
+      <input type="text" name="uid" value="UserID">
+      <br>
+      <input type="text" name="message" value="Hello">
+      <br>
+      <input type="submit" name="submit" value="submit">
+    </form>
+    <h2>Result:</h2>
+      {% if not(responsemsg==None) %}
+      {% for item in responsemsg | reverse %}
+        <pre><code class="prettyprint">{{item}}</code></pre>
+      {% endfor %}
+      {% endif %}
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  </body>
+</html>
