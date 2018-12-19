@@ -12,7 +12,7 @@ CORS(app)
 
 
 def callmsgapi(uid, msg):
-    url = "http://172.28.5.3:5005/webhooks/rest/webhook"
+    url = "http://172.28.5.4:5005/webhooks/rest/webhook"
     h = {"Content-Type": "application/json"}
     if uid == None:
         uid = "me"
