@@ -40,8 +40,11 @@ docker run \
   Start the ELK stack with:
   - docker-compose -f docker-compose-elk.yml up
   
-  This creates a network that filebeat will need to join.
+  This creates a network that filebeat and other containers will need to join.
   
+  To send container logs to logstash, run containers with these arguments added to the docker run command:
+  --network=ttydinternproject_default --log-driver=gelf --log-opt gelf-address=udp://INSERTLOGSTASHIPHERE:5044
+  Where the logstash IP is what you get from inspecting the ttydinternproject_default network for logstash. Working on making this static.
   
   Start jenkins_container using the section above and if successful, run filebeat with:
-  - docker run --rm --name filebeat_container --volumes-from jenkins_container:ro -v /var/lib/docker:/var/lib/docker --network=ttydinternproject_default filebeatimage
+  - docker run --rm --name filebeat_container --volumes-from jenkins_container:ro --network=ttydinternproject_default filebeatimage
