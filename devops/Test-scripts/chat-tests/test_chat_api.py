@@ -7,7 +7,7 @@ opts = FirefoxOptions()
 opts.add_argument("--headless")
 driver = webdriver.Firefox(firefox_options=opts)
 # Get the homepage
-driver.get("http://172.28.5.5:80")
+driver.get("http://172.28.5.5:8090")
 print(driver.title)
 print(driver.current_url)
 assert "Chat API test harness" in driver.title
