@@ -10,8 +10,10 @@ python3 test_web_page_sign_up.py
 SIGNUPEXIT=$?
 python3 test_data_api.py
 DATAEXIT=$?
+python3 test_chat_api.py
+CHATEXIT=$?
 # If any of the test scripts failed, exit with an error
-if [ $WEBEXIT -ne 0 ] || [ $NLUEXIT -ne 0 ] || [ $SIGNUPEXIT -ne 0 ] || [ $DATAEXIT -ne 0 ];
+if [ $WEBEXIT -ne 0 ] || [ $NLUEXIT -ne 0 ] || [ $SIGNUPEXIT -ne 0 ] || [ $DATAEXIT -ne 0 ] || [ $CHATEXIT -ne 0 ];
 then
     exit 1
 else

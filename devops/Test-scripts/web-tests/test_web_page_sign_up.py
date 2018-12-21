@@ -29,9 +29,10 @@ print("Clicking submit")
 submit_btn_elem = driver.find_element_by_id("register-submit-btn")
 submit_btn_elem.submit()
 try:
+    # with pytest.raises(Exception):
     element = WebDriverWait(driver, 10).until(
         EC.title_is("test project")
     )
 finally:
     driver.quit()
-driver.close()
+# driver.close()
