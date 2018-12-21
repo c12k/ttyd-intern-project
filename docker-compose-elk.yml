@@ -13,6 +13,11 @@ services:
       - elasticsearch
     ports:
       - "5044:5044"
+    networks:
+      default:
+        ipv4_address: 172.21.0.7
+        aliases:
+          - "logstash"
 
   elasticsearch:
     image: elasticsearch:6.5.2
@@ -35,3 +40,10 @@ services:
 volumes:
   esdata:
     driver: local
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.21.0.0/16
