@@ -47,7 +47,7 @@ docker run \
   --network=ttydinternproject_default --log-driver=gelf --log-opt gelf-address=udp://INSERTLOGSTASHIPHERE:5044
   
   
-  Where the logstash IP is what you get from inspecting the ttydinternproject_default network for logstash. Working on making this static.
+  Where the logstash IP is what you get from inspecting the ttyd-internp-roject_default network for logstash. Working on making this static.
   
   Start jenkins_container using the section above and if successful, run filebeat with:
   - docker run --rm --name filebeat_container --volumes-from jenkins_container:ro --network=ttydinternproject_default filebeatimage
