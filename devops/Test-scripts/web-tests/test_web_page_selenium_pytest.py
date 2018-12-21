@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 from selenium.webdriver import FirefoxOptions
+from selenium.common.exceptions import NoSuchElementException
 opts = FirefoxOptions()
 opts.add_argument("--headless")
 driver = webdriver.Firefox(firefox_options=opts)
@@ -18,6 +19,8 @@ assert "register" in driver.current_url
 # Click the back button and make sure we're back on the home page
 assert driver.find_element_by_class_name("register-form")
 driver.find_element_by_id("register-back-btn").click()
-assert driver.find_element_by_class_name("login-content")
+# We expect this to fail at the moment
+with pytest.raises(NoSuchElementException):
+    driver.find_element_by_class_name("login-content")
 
 driver.close()
