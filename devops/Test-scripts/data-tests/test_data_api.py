@@ -16,19 +16,20 @@ init_elem = driver.find_element_by_xpath("//input[@name='init']")
 init_elem.click()
 assert "init" in driver.current_url
 assert "csv loaded" in driver.page_source
-print("Clicking listCust button")
-cust_elem = driver.find_element_by_xpath("//input[@name='listCust']")
-cust_elem.click()
-assert "listCust" in driver.current_url
-assert "customer" in driver.find_element_by_xpath("/html/body/pre/code/span[4]").text
-print("Clicking listProd button")
-prod_elem = driver.find_element_by_xpath("//input[@name='listProd']")
-prod_elem.click()
-assert "listProd" in driver.current_url
-assert "product" in driver.find_element_by_xpath("/html/body/pre/code/span[4]").text
-print("Clicking listTotal button")
-total_elem = driver.find_element_by_xpath("//input[@name='listTotal']")
-total_elem.click()
-assert "listTotal" in driver.current_url
-assert "Australia" in driver.find_element_by_xpath("/html/body/pre/code/span[5]").text
+for i in range(0, 9):
+    print("Clicking listCust button")
+    cust_elem = driver.find_element_by_xpath("//input[@name='listCust']")
+    cust_elem.click()
+    assert "listCust" in driver.current_url
+    assert "customer" in driver.find_element_by_xpath("/html/body/pre/code/span[4]").text
+    print("Clicking listProd button")
+    prod_elem = driver.find_element_by_xpath("//input[@name='listProd']")
+    prod_elem.click()
+    assert "listProd" in driver.current_url
+    assert "product" in driver.find_element_by_xpath("/html/body/pre/code/span[4]").text
+    print("Clicking listTotal button")
+    total_elem = driver.find_element_by_xpath("//input[@name='listTotal']")
+    total_elem.click()
+    assert "listTotal" in driver.current_url
+    assert "Australia" in driver.find_element_by_xpath("/html/body/pre/code/span[5]").text
 driver.close()
