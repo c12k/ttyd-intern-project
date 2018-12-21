@@ -45,7 +45,7 @@ pipeline {
         sh 'docker run -d -p 80:80 --rm --name data_container dataimage'
         sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
         sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
-        sh 'docker run -d -p 8090:80 --rm --name chat_container chatimage'
+        sh 'docker run -d -p 8081:80 --rm --name chat_container chatimage'
         // Create a network and connect the images to it (core container only if it still exists)
         sh 'docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 jenkins_test_network'
         sh 'docker network connect --ip 172.28.5.1 jenkins_test_network web_container'
