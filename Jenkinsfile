@@ -45,6 +45,7 @@ pipeline {
         sh 'docker run -d -p 80:80 --rm --name data_container dataimage'
         sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
         sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
+        sh 'docker run -d -p 8090:80 --rm --name chat_container chatimage'
         // Create a network and connect the images to it (core container only if it still exists)
         sh 'docker network create --driver=bridge --subnet=172.28.0.0/16 --ip-range=172.28.5.0/24 jenkins_test_network'
         sh 'docker network connect --ip 172.28.5.1 jenkins_test_network web_container'
@@ -80,6 +81,7 @@ pipeline {
       sh 'if docker ps | awk -v app=data_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop data_container; echo "data_container exists, removing it."; else echo "data_container did not exist"; fi'
       sh 'if docker ps | awk -v app=nlu_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop nlu_container; echo "nlu_container exists, removing it."; else echo "nlu_container did not exist"; fi'
       sh 'if docker ps | awk -v app=core_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop core_container; echo "core_container exists, removing it."; else echo "core_container did not exist"; fi'
+      sh 'if docker ps | awk -v app=chat_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop chat_container; echo "chat_container exists, removing it."; else echo "chat_container did not exist"; fi'
       sh 'docker network rm jenkins_test_network'
     }
   }
