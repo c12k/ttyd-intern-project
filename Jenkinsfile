@@ -9,13 +9,19 @@ pipeline {
     stage('Web rebuild') {
       steps {
         sh 'if docker ps | awk -v app=web_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop web_container; echo "web_container exists, removing it."; else echo "web_container does not exist already."; fi'
-        sh 'docker build -f ./Dockerfileweb -t webstuff:latest .'
+        sh 'docker build -f ./Dockerfileweb -t webimage:latest .'
       }
     }
     stage('Data rebuild') {
       steps {
         sh 'if docker ps | awk -v app=data_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop data_container; echo "data_container exists, removing it."; else echo "data_container did not exist"; fi'
         sh 'docker build -f ./Dockerfiledata -t dataimage .'
+      }
+    }
+    stage('Chat rebuild') {
+      steps {
+        sh 'if docker ps | awk -v app=chat_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop chat_container; echo "chat_container exists, removing it."; else echo "chat_container did not exist"; fi'
+        sh 'docker build -f ./Dockerfilechat -t chatimage .'
       }
     }
     stage('Rasa NLU rebuild') {
@@ -35,7 +41,7 @@ pipeline {
     stage('Setup for Tests') {
       steps {
         // Run all the containers
-        sh 'docker run -td -p 3000:3000 --rm --name web_container webstuff'
+        sh 'docker run -td -p 3000:3000 --rm --name web_container webimage'
         sh 'docker run -d -p 80:80 --rm --name data_container dataimage'
         sh 'docker run -d -p 5000:5000 --rm --name nlu_container nluimage'
         sh 'docker run -d -p 5005:5005 --rm --name core_container coreimage'
@@ -45,6 +51,7 @@ pipeline {
         sh 'docker network connect --ip 172.28.5.2 jenkins_test_network data_container'
         sh 'docker network connect --ip 172.28.5.3 jenkins_test_network nlu_container'
         sh 'docker network connect --ip 172.28.5.4 jenkins_test_network core_container'
+        sh 'docker network connect --ip 172.28.5.5 jenkins_test_network chat_container'
         // sh 'if docker ps | awk -v app=core_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker network connect --ip 172.28.5.4 jenkins_test_network core_container; echo "core_container exists, adding to network."; else echo "core_container did not exist"; fi'
         // Rebuild the test image
         sh 'docker build -f Dockerfileselpy -t selpyimage .'
