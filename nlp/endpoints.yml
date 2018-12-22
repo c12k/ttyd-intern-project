@@ -1,2 +1,2 @@
 nlu:
-  url: http://localhost:5000
+  url: http://172.28.5.3:5000
