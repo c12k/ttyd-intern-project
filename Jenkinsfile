@@ -40,10 +40,8 @@ pipeline {
     }
     stage('Deploy'){
       steps{
-      withCredentials([file(credentialsId: "${env.JENKINS_GCLOUD_CRED_ID}", variable: 'JENKINSGCLOUDCREDENTIAL')])
-      {
         sh """
-          gcloud auth activate-service-account --key-file=${JENKINSGCLOUDCREDENTIAL}
+          gcloud auth activate-service-account --key-file=/var/jenkins_home/key.json
           gcloud config set compute/zone asia-southeast1-a
           gcloud config set compute/region asia-southeast1
           gcloud config set project plexiform-leaf-226104
@@ -56,7 +54,6 @@ pipeline {
           //kubectl apply -f $BASE_DIR/k8s/${IMAGE_NAME}/
           //gcloud auth revoke --all
           """
-      }
       }
     }
     stage('Setup for Tests') {
