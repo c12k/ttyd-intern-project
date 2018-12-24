@@ -6,6 +6,9 @@ Key results in 30 days:
 - Triggered build from Github to deployment
 - Github repo showing all code with regular commits and documentation
 
+# General notes
+Current version of Rasa Core being used doesn't work on CPUs without AVX support.
+
 # running jenkins in docker
 docker run \
   -u root \
@@ -51,3 +54,21 @@ docker run \
   
   Start jenkins_container using the section above and if successful, run filebeat with:
   - docker run --rm --name filebeat_container --volumes-from jenkins_container:ro --network=ttydinternproject_default filebeatimage
+  
+  # Connecting Jenkins to Google Cloud
+  Pull google/cloud-sdk
+Then do:
+docker run --rm -ti -v /.config/gcloud:/root/.config/gcloud google/cloud-sdk gcloud init
+
+From then on, should start with default config which is already set up.
+
+Yet another container we have going, would be more efficient to just add gcloud commands to the Jenkins image.
+
+Plexiform is Daniel's google cloud project, this can be changed and probably should be for each user.
+This is hardcoded only in the Jenkinsfile so replace plexiform-leaf-226104 everywhere in that with the project selected in the gcloud init step.
+
+Jenkins then interacts with gcloud through the google/cloud-sdk docker image.
+Images are tagged with gcr.io/plexiform-leaf-226104/IMAGENAME:latest when built by jenkins.
+When the Deploy section is reached, gcloud authenticates docker and pushes these tagged images to the gcr.io repo.
+Kubectl on gcloud then can pull them from the gcr.io repo when it needs those images.
+Clusters should be created manually (maybe the current cluster name can be passed in as an env var?).
