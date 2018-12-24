@@ -44,7 +44,7 @@ docker run \
   
   To send container logs to logstash, run containers with these arguments added to the docker run command:
   
-  --network=ttydinternproject_default --log-driver=gelf --log-opt gelf-address=udp://172.21.0.7:5044
+  --network=ttyd-intern-project_default --log-driver=gelf --log-opt gelf-address=udp://172.21.0.7:5044
   
   
   Where the logstash IP is what you get from inspecting the ttyd-internp-roject_default network for logstash. Working on making this static.

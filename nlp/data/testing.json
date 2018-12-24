@@ -1,0 +1,138 @@
+﻿{
+    "rasa_nlu_data": {
+        "common_examples": [
+            {
+                "text": "show quarterly customers for HR for Mexico for the year before last",
+                "intent": "facts",
+                "entities": [
+                    {
+                        "end": 14,
+                        "entity": "timeunit",
+                        "start": 5,
+                        "value": "quarterly"
+                    },
+                    {
+                        "end": 24,
+                        "entity": "fact",
+                        "start": 15,
+                        "value": "customers"
+                    },
+                    {
+                        "end": 31,
+                        "entity": "org",
+                        "start": 29,
+                        "value": "HR"
+                    },
+                    {
+                        "end": 42,
+                        "entity": "geo",
+                        "start": 36,
+                        "value": "Mexico"
+                    },
+                    {
+                        "end": 67,
+                        "entity": "period",
+                        "start": 47,
+                        "value": "the year before last"
+                    }
+                ]
+            },
+            {
+                "text": "what is the monthly sales for 2010 for Brazil",
+                "intent": "facts",
+                "entities": [
+                    {
+                        "end": 19,
+                        "entity": "timeunit",
+                        "start": 12,
+                        "value": "monthly"
+                    },
+                    {
+                        "end": 25,
+                        "entity": "fact",
+                        "start": 20,
+                        "value": "sales"
+                    },
+                    {
+                        "end": 34,
+                        "entity": "period",
+                        "start": 30,
+                        "value": "2010"
+                    },
+                    {
+                        "end": 45,
+                        "entity": "geo",
+                        "start": 39,
+                        "value": "Brazil"
+                    }
+                ]
+            },
+            {
+                "text": "show quarterly sales for Legal for Canada for 2010",
+                "intent": "facts",
+                "entities": [
+                    {
+                        "end": 14,
+                        "entity": "timeunit",
+                        "start": 5,
+                        "value": "quarterly"
+                    },
+                    {
+                        "end": 20,
+                        "entity": "fact",
+                        "start": 15,
+                        "value": "sales"
+                    },
+                    {
+                        "end": 30,
+                        "entity": "org",
+                        "start": 25,
+                        "value": "Legal"
+                    },
+                    {
+                        "end": 41,
+                        "entity": "geo",
+                        "start": 35,
+                        "value": "Canada"
+                    },
+                    {
+                        "end": 50,
+                        "entity": "period",
+                        "start": 46,
+                        "value": "2010"
+                    }
+                ]
+            },
+            {
+                "text": "show weekly revenue for Legal for 2016",
+                "intent": "facts",
+                "entities": [
+                    {
+                        "end": 11,
+                        "entity": "timeunit",
+                        "start": 5,
+                        "value": "weekly"
+                    },
+                    {
+                        "end": 19,
+                        "entity": "fact",
+                        "start": 12,
+                        "value": "revenue"
+                    },
+                    {
+                        "end": 29,
+                        "entity": "org",
+                        "start": 24,
+                        "value": "Legal"
+                    },
+                    {
+                        "end": 38,
+                        "entity": "period",
+                        "start": 34,
+                        "value": "2016"
+                    }
+                ]
+            }
+        ]
+    }
+}

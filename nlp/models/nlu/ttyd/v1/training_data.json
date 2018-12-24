@@ -3,31 +3,7 @@
     "common_examples": [
       {
         "intent": "hi",
-        "text": "good morning"
-      },
-      {
-        "intent": "hi",
-        "text": "hi"
-      },
-      {
-        "intent": "hi",
-        "text": "hello there"
-      },
-      {
-        "intent": "hi",
-        "text": "good afternoon"
-      },
-      {
-        "intent": "hi",
-        "text": "g'day"
-      },
-      {
-        "intent": "hi",
-        "text": "yo"
-      },
-      {
-        "intent": "hi",
-        "text": "hello"
+        "text": "hey dude"
       },
       {
         "intent": "hi",
@@ -35,11 +11,43 @@
       },
       {
         "intent": "hi",
-        "text": "hey dude"
+        "text": "yo"
       },
       {
         "intent": "hi",
-        "text": "let's go"
+        "text": "good morning"
+      },
+      {
+        "intent": "hi",
+        "text": "good evening"
+      },
+      {
+        "intent": "hi",
+        "text": "hi"
+      },
+      {
+        "intent": "hi",
+        "text": "hey there"
+      },
+      {
+        "intent": "hi",
+        "text": "hello there"
+      },
+      {
+        "intent": "hi",
+        "text": "hello"
+      },
+      {
+        "intent": "hi",
+        "text": "good afternoon"
+      },
+      {
+        "intent": "bye",
+        "text": "have a nice day"
+      },
+      {
+        "intent": "bye",
+        "text": "c you later"
       },
       {
         "intent": "bye",
@@ -51,11 +59,7 @@
       },
       {
         "intent": "bye",
-        "text": "goodbye"
-      },
-      {
-        "intent": "bye",
-        "text": "see you later"
+        "text": "cu"
       },
       {
         "intent": "bye",
@@ -63,7 +67,7 @@
       },
       {
         "intent": "bye",
-        "text": "c you later"
+        "text": "good night"
       },
       {
         "intent": "bye",
@@ -71,63 +75,143 @@
       },
       {
         "intent": "bye",
-        "text": "good night"
+        "text": "goodbye"
       },
       {
         "intent": "bye",
-        "text": "cu"
-      },
-      {
-        "intent": "bye",
-        "text": "have a nice day"
+        "text": "bye bye"
       },
       {
         "intent": "facts",
         "entities": [
           {
-            "end": 16,
-            "entity": "fact",
-            "start": 9,
-            "value": "expense"
+            "end": 12,
+            "entity": "org",
+            "start": 5,
+            "value": "Product"
           },
           {
-            "end": 28,
+            "end": 20,
+            "entity": "fact",
+            "start": 13,
+            "value": "product"
+          }
+        ],
+        "text": "show Product product"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 21,
+            "entity": "fact",
+            "start": 13,
+            "value": "products"
+          },
+          {
+            "end": 27,
             "entity": "org",
-            "start": 21,
+            "start": 22,
+            "value": "Legal"
+          },
+          {
+            "end": 36,
+            "entity": "period",
+            "start": 32,
+            "value": "2010"
+          }
+        ],
+        "text": "tell me what products Legal had 2010"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 19,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "monthly"
+          },
+          {
+            "end": 29,
+            "entity": "fact",
+            "start": 20,
+            "value": "customers"
+          },
+          {
+            "end": 55,
+            "entity": "period",
+            "start": 34,
+            "value": "January to March 2018"
+          },
+          {
+            "end": 63,
+            "entity": "geo",
+            "start": 60,
+            "value": "USA"
+          }
+        ],
+        "text": "what is the monthly customers for January to March 2018 for USA"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 21,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "quarterly"
+          },
+          {
+            "end": 29,
+            "entity": "fact",
+            "start": 22,
+            "value": "product"
+          }
+        ],
+        "text": "show latest quarterly product"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 13,
+            "entity": "fact",
+            "start": 5,
+            "value": "products"
+          },
+          {
+            "end": 25,
+            "entity": "org",
+            "start": 18,
             "value": "Finance"
           },
           {
-            "end": 44,
+            "end": 52,
             "entity": "period",
-            "start": 37,
-            "value": "in 2015"
+            "start": 31,
+            "value": "January to March 2018"
           }
         ],
-        "text": "how much expense did Finance make in in 2015"
+        "text": "what products did Finance have January to March 2018?"
       },
       {
         "intent": "facts",
         "entities": [
           {
-            "end": 18,
+            "end": 19,
             "entity": "timeunit",
             "start": 12,
-            "value": "weekly"
+            "value": "monthly"
           },
           {
-            "end": 26,
+            "end": 27,
             "entity": "fact",
-            "start": 19,
+            "start": 20,
             "value": "revenue"
-          },
-          {
-            "end": 62,
-            "entity": "geo",
-            "start": 56,
-            "value": "Brazil"
           }
         ],
-        "text": "what is the weekly revenue for the latest 12 months for Brazil"
+        "text": "show latest monthly revenue"
       },
       {
         "intent": "facts",
@@ -139,13 +223,13 @@
             "value": "yearly"
           },
           {
-            "end": 24,
+            "end": 20,
             "entity": "fact",
             "start": 12,
-            "value": "gross profit"
+            "value": "customer"
           }
         ],
-        "text": "show yearly gross profit"
+        "text": "show yearly customer"
       },
       {
         "intent": "facts",
@@ -157,37 +241,55 @@
             "value": "monthly"
           },
           {
-            "end": 23,
+            "end": 20,
             "entity": "fact",
             "start": 13,
-            "value": "financials"
+            "value": "product"
+          },
+          {
+            "end": 45,
+            "entity": "period",
+            "start": 25,
+            "value": "the year before last"
           }
         ],
-        "text": "show monthly financials"
+        "text": "show monthly product for the year before last"
       },
       {
         "intent": "facts",
         "entities": [
           {
-            "end": 23,
+            "end": 19,
             "entity": "fact",
-            "start": 13,
-            "value": "financials"
+            "start": 12,
+            "value": "product"
           },
           {
-            "end": 31,
-            "entity": "org",
-            "start": 24,
-            "value": "Product"
-          },
-          {
-            "end": 56,
+            "end": 39,
             "entity": "period",
-            "start": 36,
-            "value": "the year before last"
+            "start": 24,
+            "value": "year ended 2015"
           }
         ],
-        "text": "tell me what financials Product had the year before last"
+        "text": "what is the product for year ended 2015"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 19,
+            "entity": "fact",
+            "start": 12,
+            "value": "product"
+          },
+          {
+            "end": 32,
+            "entity": "period",
+            "start": 28,
+            "value": "2016"
+          }
+        ],
+        "text": "what is the product for the 2016"
       },
       {
         "intent": "facts",
@@ -199,19 +301,43 @@
             "value": "weekly"
           },
           {
-            "end": 26,
+            "end": 27,
             "entity": "fact",
             "start": 19,
-            "value": "expense"
+            "value": "customer"
           },
           {
-            "end": 38,
+            "end": 36,
             "entity": "period",
-            "start": 31,
-            "value": "in 2016"
+            "start": 32,
+            "value": "2016"
           }
         ],
-        "text": "what is the weekly expense for in 2016"
+        "text": "what is the weekly customer for 2016"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 19,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "monthly"
+          },
+          {
+            "end": 28,
+            "entity": "fact",
+            "start": 20,
+            "value": "customer"
+          },
+          {
+            "end": 54,
+            "entity": "period",
+            "start": 33,
+            "value": "January to March 2018"
+          }
+        ],
+        "text": "what is the monthly customer for January to March 2018"
       },
       {
         "intent": "facts",
@@ -223,205 +349,361 @@
             "value": "yearly"
           },
           {
-            "end": 22,
+            "end": 21,
             "entity": "fact",
             "start": 12,
-            "value": "net profit"
+            "value": "customers"
           },
           {
-            "end": 61,
-            "entity": "period",
-            "start": 54,
-            "value": "in 2016"
-          }
-        ],
-        "text": "show yearly net profit for BHP for USA for year ended in 2016"
-      },
-      {
-        "intent": "facts",
-        "entities": [
-          {
-            "end": 12,
-            "entity": "fact",
-            "start": 5,
-            "value": "expense"
-          },
-          {
-            "end": 24,
+            "end": 33,
             "entity": "org",
-            "start": 17,
+            "start": 26,
             "value": "Finance"
           },
           {
-            "end": 37,
+            "end": 42,
             "entity": "period",
-            "start": 30,
-            "value": "in 2015"
+            "start": 38,
+            "value": "2010"
           }
         ],
-        "text": "what expense did Finance have in 2015?"
+        "text": "show yearly customers for Finance for 2010"
       },
       {
         "intent": "facts",
         "entities": [
           {
-            "end": 21,
-            "entity": "timeunit",
-            "start": 12,
-            "value": "quarterly"
-          },
-          {
-            "end": 32,
+            "end": 14,
             "entity": "fact",
-            "start": 22,
-            "value": "net profit"
+            "start": 9,
+            "value": "sales"
           },
           {
-            "end": 50,
+            "end": 26,
+            "entity": "org",
+            "start": 19,
+            "value": "Product"
+          },
+          {
+            "end": 56,
             "entity": "period",
-            "start": 37,
-            "value": "two years ago"
+            "start": 35,
+            "value": "January to March 2018"
           }
         ],
-        "text": "what is the quarterly net profit for two years ago"
+        "text": "how much sales did Product make in January to March 2018"
       },
       {
         "intent": "facts",
         "entities": [
           {
-            "end": 21,
+            "end": 14,
             "entity": "timeunit",
-            "start": 12,
+            "start": 5,
             "value": "quarterly"
+          },
+          {
+            "end": 22,
+            "entity": "fact",
+            "start": 15,
+            "value": "revenue"
+          },
+          {
+            "end": 29,
+            "entity": "org",
+            "start": 27,
+            "value": "HR"
           },
           {
             "end": 40,
-            "entity": "fact",
-            "start": 22,
-            "value": "earnings per share"
+            "entity": "geo",
+            "start": 34,
+            "value": "Mexico"
+          },
+          {
+            "end": 65,
+            "entity": "period",
+            "start": 45,
+            "value": "the year before last"
           }
         ],
-        "text": "what is the quarterly earnings per share for the latest 12 months"
+        "text": "show quarterly revenue for HR for Mexico for the year before last"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 21,
+            "entity": "timeunit",
+            "start": 12,
+            "value": "quarterly"
+          },
+          {
+            "end": 30,
+            "entity": "fact",
+            "start": 22,
+            "value": "customer"
+          },
+          {
+            "end": 56,
+            "entity": "period",
+            "start": 35,
+            "value": "January to March 2018"
+          }
+        ],
+        "text": "what is the quarterly customer for January to March 2018"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 14,
+            "entity": "timeunit",
+            "start": 5,
+            "value": "quarterly"
+          },
+          {
+            "end": 24,
+            "entity": "fact",
+            "start": 15,
+            "value": "customers"
+          },
+          {
+            "end": 38,
+            "entity": "period",
+            "start": 29,
+            "value": "last week"
+          }
+        ],
+        "text": "show quarterly customers for last week"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 14,
+            "entity": "timeunit",
+            "start": 5,
+            "value": "quarterly"
+          },
+          {
+            "end": 22,
+            "entity": "fact",
+            "start": 15,
+            "value": "revenue"
+          },
+          {
+            "end": 29,
+            "entity": "org",
+            "start": 27,
+            "value": "HR"
+          },
+          {
+            "end": 43,
+            "entity": "geo",
+            "start": 34,
+            "value": "Australia"
+          },
+          {
+            "end": 57,
+            "entity": "period",
+            "start": 48,
+            "value": "last week"
+          }
+        ],
+        "text": "show quarterly revenue for HR for Australia for last week"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 14,
+            "entity": "timeunit",
+            "start": 5,
+            "value": "quarterly"
+          },
+          {
+            "end": 23,
+            "entity": "fact",
+            "start": 15,
+            "value": "customer"
+          },
+          {
+            "end": 35,
+            "entity": "org",
+            "start": 28,
+            "value": "Finance"
+          },
+          {
+            "end": 49,
+            "entity": "geo",
+            "start": 40,
+            "value": "Australia"
+          },
+          {
+            "end": 63,
+            "entity": "period",
+            "start": 54,
+            "value": "last week"
+          }
+        ],
+        "text": "show quarterly customer for Finance for Australia for last week"
+      },
+      {
+        "intent": "facts",
+        "entities": [
+          {
+            "end": 14,
+            "entity": "timeunit",
+            "start": 5,
+            "value": "quarterly"
+          },
+          {
+            "end": 24,
+            "entity": "fact",
+            "start": 15,
+            "value": "customers"
+          },
+          {
+            "end": 36,
+            "entity": "org",
+            "start": 29,
+            "value": "Product"
+          },
+          {
+            "end": 47,
+            "entity": "geo",
+            "start": 41,
+            "value": "Mexico"
+          },
+          {
+            "end": 56,
+            "entity": "period",
+            "start": 52,
+            "value": "2016"
+          }
+        ],
+        "text": "show quarterly customers for Product for Mexico for 2016"
       },
       {
         "intent": "hi",
-        "text": "are you around whatsup"
+        "text": "howdy hello"
       },
       {
         "intent": "hi",
-        "text": "hey good day hi"
+        "text": "howdy whatsup"
       },
       {
         "intent": "hi",
-        "text": "whats up hi hey"
+        "text": "good afternoon hey hola"
       },
       {
         "intent": "hi",
-        "text": "hello hola"
+        "text": "good morning morning"
       },
       {
         "intent": "hi",
-        "text": "whatsup hello hi"
+        "text": "are you there howdy hola"
       },
       {
         "intent": "hi",
-        "text": "hola how are things going hola"
+        "text": "hello are you around? hi"
       },
       {
         "intent": "hi",
-        "text": "are you around? whats up"
+        "text": "how are you doing whats up"
       },
       {
         "intent": "hi",
-        "text": "hola whatsup hello"
+        "text": "good morning hello howdy"
       },
       {
         "intent": "hi",
-        "text": "whatsup howdy hola"
+        "text": "hola good night howdy"
       },
       {
         "intent": "hi",
-        "text": "hi hey hi"
+        "text": "hi hola hey"
       },
       {
         "intent": "bye",
-        "text": "ttyl adieu chau going out"
+        "text": "talk to you later adieu bye goodbye leaving"
       },
       {
         "intent": "bye",
-        "text": "leaving"
+        "text": "heading out goodbye"
       },
       {
         "intent": "bye",
-        "text": "talk to you soon adieu farewell gtg talk to you soon"
+        "text": "have to go chau goodbye leaving"
       },
       {
         "intent": "bye",
-        "text": "bye gtg bye talk to you soon"
+        "text": "talk to you later ttyl bye adios im leaving now"
       },
       {
         "intent": "bye",
-        "text": "have to go gtg adios im leaving now"
+        "text": "heading out bye farewell chao talk to you soon"
       },
       {
         "intent": "bye",
-        "text": "goodbye goodbye adieu"
+        "text": "talk to you soon adieu bye goodbye talk to you soon"
       },
       {
         "intent": "bye",
-        "text": "going out gtg ttyl gtg talk to you soon"
+        "text": "leaving farewell ttyl talk to you later"
       },
       {
         "intent": "bye",
-        "text": "leaving adieu goodbye adieu going out"
+        "text": "talk to you soon chau bye adieu leaving"
       },
       {
         "intent": "bye",
-        "text": "ttyl adios farewell have to go"
+        "text": "have to go gtg ttyl chao im leaving now"
       },
       {
         "intent": "bye",
-        "text": "im leaving now goodbye goodbye farewell talk to you soon"
+        "text": "talk to you later chau adios adieu going out"
       },
       {
         "intent": "affirm",
-        "text": "correct"
+        "text": "yes that is allright"
       },
       {
         "intent": "affirm",
-        "text": "you got that yes to that"
+        "text": "ok"
       },
       {
         "intent": "affirm",
-        "text": "correct that is what i mean"
+        "text": "allright yes sir"
       },
       {
         "intent": "affirm",
-        "text": "i want that"
+        "text": "you're goddamn ok"
       },
       {
         "intent": "affirm",
-        "text": "you're goddamn yes sir"
+        "text": "you got that allright"
       },
       {
         "intent": "affirm",
-        "text": "yes that is si"
+        "text": "correct ok correct si"
       },
       {
         "intent": "affirm",
-        "text": "correcto"
+        "text": "yes sir you understood me"
       },
       {
         "intent": "affirm",
-        "text": "affirmative allright correcto yes sir"
+        "text": "that is fine"
       },
       {
         "intent": "affirm",
-        "text": "correcto right yes to that yes to that"
+        "text": "correcto correct ok"
       },
       {
         "intent": "affirm",
-        "text": "yes sir correct yes yep"
+        "text": "correcto affirmative affirmative yes to that"
       }
     ],
     "regex_features": [],

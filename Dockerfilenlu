@@ -2,6 +2,7 @@ FROM rasa/rasa_nlu:0.13.7-full
 RUN python -m spacy download en_core_web_md
 COPY ./nlp/models/nlu/ projects
 COPY ./nlp/data/training.json .
+COPY ./nlp/data/testing.json .
 COPY ./nlp/train_nlu_config.yml .
 COPY ./nlp/entry-nlu.sh .
 COPY ./nlp/.gitattributes .
