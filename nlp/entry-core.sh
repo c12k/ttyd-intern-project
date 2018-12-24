@@ -19,7 +19,7 @@ case ${1} in
         exec python -m rasa_core.run -d ./dialogue --enable_api --endpoints endpoints.yml --nlu ttyd/v1 --port 5005 --cors "*" --credentials credentials.yml
         ;;
     debug)
-        exec python -m rasa_core.run -d ./dialogue --debug --enable_api --response_log logs --endpoints endpoints.yml --nlu ttyd/v1 --port 5005 --cors "*" --credentials credentials.yml
+        exec python -m rasa_core.run -d ./dialogue --debug --enable_api --endpoints endpoints.yml --nlu ttyd/v1 --port 5005 --cors "*" --credentials credentials.yml
         ;;
     run)
         exec "${@:2}"
