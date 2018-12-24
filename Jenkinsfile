@@ -46,13 +46,7 @@ pipeline {
           gcloud config set compute/region asia-southeast1
           gcloud config set project plexiform-leaf-226104
           kubectl --version
-          //gcloud container clusters get-credentials ${GCLOUD_K8S_CLUSTER_NAME}
-          c//hmod +x $BASE_DIR/k8s/process_files.sh
-          //cd $BASE_DIR/k8s/
-          //./process_files.sh "$GCLOUD_PROJECT_ID" "${IMAGE_NAME}" "${DOCKER_PROJECT_NAMESPACE}/${IMAGE_NAME}:${RELEASE_TAG}" "./${IMAGE_NAME}/"
-          //cd $BASE_DIR/k8s/${IMAGE_NAME}/.
-          //kubectl apply -f $BASE_DIR/k8s/${IMAGE_NAME}/
-          //gcloud auth revoke --all
+          gcloud auth revoke --all
           """
       }
     }
