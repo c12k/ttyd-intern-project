@@ -40,7 +40,7 @@ pipeline {
     }
     stage('Deploy'){
       steps{
-      withCredentials([file(credentialsId: "${JENKINS_GCLOUD_CRED_ID}", variable: 'JENKINSGCLOUDCREDENTIAL')])
+      withCredentials([file(credentialsId: "${env.JENKINS_GCLOUD_CRED_ID}", variable: 'JENKINSGCLOUDCREDENTIAL')])
       {
         sh """
           gcloud auth activate-service-account --key-file=${JENKINSGCLOUDCREDENTIAL}
