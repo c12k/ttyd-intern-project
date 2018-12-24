@@ -38,6 +38,27 @@ pipeline {
         sh 'docker build -f ./Dockerfilecore -t coreimage .'
       }
     }
+    stage('Deploy'){
+      steps{
+      withCredentials([file(credentialsId: "${JENKINS_GCLOUD_CRED_ID}", variable: 'JENKINSGCLOUDCREDENTIAL')])
+      {
+        sh """
+          gcloud auth activate-service-account --key-file=${JENKINSGCLOUDCREDENTIAL}
+          gcloud config set compute/zone asia-southeast1-a
+          gcloud config set compute/region asia-southeast1
+          gcloud config set project plexiform-leaf-226104
+          kubectl --version
+          //gcloud container clusters get-credentials ${GCLOUD_K8S_CLUSTER_NAME}
+          c//hmod +x $BASE_DIR/k8s/process_files.sh
+          //cd $BASE_DIR/k8s/
+          //./process_files.sh "$GCLOUD_PROJECT_ID" "${IMAGE_NAME}" "${DOCKER_PROJECT_NAMESPACE}/${IMAGE_NAME}:${RELEASE_TAG}" "./${IMAGE_NAME}/"
+          //cd $BASE_DIR/k8s/${IMAGE_NAME}/.
+          //kubectl apply -f $BASE_DIR/k8s/${IMAGE_NAME}/
+          //gcloud auth revoke --all
+          """
+      }
+      }
+    }
     stage('Setup for Tests') {
       steps {
         // Run all the containers
