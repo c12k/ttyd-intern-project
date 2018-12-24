@@ -38,7 +38,18 @@ pipeline {
         sh 'docker build -f ./Dockerfilecore -t coreimage .'
       }
     }
+    stage('Setup for deploy'){
+      steps{
+      sh "docker pull google/cloud-sdk"
+      }
+    }
     stage('Deploy'){
+      agent {
+        docker {
+          image 'google/cloud-sdk'
+            args '-v /.config/gcloud:/root/.config/gcloud'
+        }
+      }
       steps{
         sh """
           gcloud auth activate-service-account --key-file=/var/jenkins_home/key.json
