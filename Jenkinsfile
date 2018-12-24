@@ -52,12 +52,9 @@ pipeline {
       }
       steps{
         sh """
-          gcloud auth activate-service-account --key-file=/var/jenkins_home/key.json
-          gcloud config set compute/zone asia-southeast1-a
-          gcloud config set compute/region asia-southeast1
+          gcloud projects list
           gcloud config set project plexiform-leaf-226104
           kubectl --version
-          gcloud auth revoke --all
           """
       }
     }
