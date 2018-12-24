@@ -9,7 +9,7 @@ pipeline {
     stage('Web rebuild') {
       steps {
         sh 'if docker ps | awk -v app=web_container \'NR > 1 && $NF == app{ret=1; exit} END{exit !ret}\'; then docker stop web_container; echo "web_container exists, removing it."; else echo "web_container does not exist already."; fi'
-        sh 'docker build -f ./Dockerfileweb -t webimage:latest .'
+        sh 'docker build -f ./Dockerfileweb -t webimage:latest -t gcr.io/plexiform-leaf-226104/webimage:latest .'
       }
     }
     stage('Data rebuild') {
@@ -54,7 +54,9 @@ pipeline {
         sh """
           gcloud projects list
           gcloud config set project plexiform-leaf-226104
-          gcloud container clusters create hello-cluster --zone australia-southeast1 --num-nodes=3
+          gcloud auth configure-docker
+          docker push gcr.io/plexiform-leaf-226104/webimage:latest
+          gcloud container clusters create hello-cluster --zone australia-southeast1 --num-nodes=1
           gcloud compute instances list
           kubectl run hello-web --image=gcr.io/plexiform-leaf-226104/webimage --port 8080
           kubectl get pods
