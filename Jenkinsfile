@@ -56,7 +56,6 @@ pipeline {
           gcloud config set project plexiform-leaf-226104
           gcloud auth configure-docker
           docker push gcr.io/plexiform-leaf-226104/webimage:latest
-          gcloud container clusters create hello-cluster --zone australia-southeast1 --num-nodes=1
           gcloud compute instances list
           kubectl run hello-web --image=gcr.io/plexiform-leaf-226104/webimage --port 8080
           kubectl get pods
