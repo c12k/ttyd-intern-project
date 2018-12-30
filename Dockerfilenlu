@@ -6,6 +6,7 @@ COPY ./nlp/data/testing.json .
 COPY ./nlp/train_nlu_config.yml .
 COPY ./nlp/entry-nlu.sh .
 COPY ./nlp/.gitattributes .
+COPY ./nlp/matplotlibrc .
 EXPOSE 5000
 ENTRYPOINT ["./entry-nlu.sh"]
 CMD ["start"]
